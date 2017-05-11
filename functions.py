@@ -72,9 +72,25 @@ def convertIntoInteger(value_set_array):
 					val = value[3]
 					print value
 
-		data_set += [val]
+		if val:
+			data_set += [val]
 	print '\n'
 	print '\n'
 	print '\n'
 	print '\n'
 	return data_set
+
+
+def writeSubstructResult(resulted_data):
+	resulted_data.sort(reverse=True)
+	print resulted_data
+	if not len(resulted_data):
+		pre_data = 0
+	else:
+		pre_data = resulted_data[0]
+		resulted_data.pop(0)
+	for data in resulted_data:
+		f = open('out.txt','a')
+		f.write(str(pre_data-data))
+		f.close()
+		pre_data = data

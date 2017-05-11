@@ -1,5 +1,5 @@
 import codecs
-from functions import connectedLetters, convertIntoInteger
+from functions import connectedLetters, convertIntoInteger, writeSubstructResult
 foo = codecs.open('in.txt', encoding='utf-16')
 f = open('out.txt', 'w')
 f.close()
@@ -19,18 +19,4 @@ for line in foo:
 	print '\n'
 	print '\n'
 	resulted_data = convertIntoInteger(connectedLetters(line)[4])
-	resulted_data.sort(reverse=True)
-	print resulted_data
-	if not len(resulted_data):
-		pre_data = 0
-	else:
-		pre_data = resulted_data[0]
-		resulted_data.pop(0)
-		f = open('out.txt','a')
-		f.write(str(pre_data))
-		f.close()
-	for data in resulted_data:
-		f = open('out.txt','a')
-		f.write(str(pre_data-data))
-		f.close()
-		pre_data = data
+	writeSubstructResult(resulted_data)
